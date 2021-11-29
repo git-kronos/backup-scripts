@@ -7,6 +7,7 @@ function python()
     sudo apt install software-properties-common
     sudo add-apt-repository ppa:deadsnakes/ppa -y
 
+    sudo apt install -y python3-autopep8 python3-isort python3-pip
     sudo apt install -y python3.6 python3.6-venv \
                         python3.7 python3.7-venv \
                         python3.9 python3.9-venv \

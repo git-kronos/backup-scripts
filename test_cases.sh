@@ -42,3 +42,12 @@ function import_all()
 # rm -r ubuntu
 # export_all
 # import_all
+
+sudo apt install openjdk-17-jdk-headless
+
+function neovim()
+{
+    sudo apt install neovim
+    mkdir -p ./config/nvim && cp ~/.config/nvim/init.vim $_     # backup vim
+    cp ~/.config/nvim/init.vim ~/.config/nvim/
+}
