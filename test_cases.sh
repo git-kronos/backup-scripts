@@ -1,36 +1,31 @@
 #!/bin/bash
 
-
-function set_bluetooth()
-{
+function set_bluetooth() {
     sudo cp ./config/BCM43142A0-0a5c-21d7.hcd /lib/firmware/brcm/BCM43142A0-0a5c-21d7.hcd
     sudo modprobe -r btusb
     sudo modprobe btusb
 }
 
-function gnome_setup()
-{
+function gnome_setup() {
     cp ./config/gtk.css ~/.config/gtk-3.0/
 }
 
-function export_all()
-{
+function export_all() {
     mkdir ubuntu
-    dpkg --get-selections > ./ubuntu/dpkg_list.txt
+    dpkg --get-selections >./ubuntu/dpkg_list.txt
     sudo cp -R /etc/apt/sources.list* ./ubuntu/
-    sudo apt-key exportall > ./ubuntu/repo.keys
-    snap list > ./ubuntu/snap_repo.txt
-    apt list > ./ubuntu/apt_repo.txt
+    sudo apt-key exportall >./ubuntu/repo.keys
+    snap list >./ubuntu/snap_repo.txt
+    apt list >./ubuntu/apt_repo.txt
 }
 
-function import_all()
-{
+function import_all() {
     sudo apt-key add ~/Repo.keys
     sudo cp -R ~/sources.list* /etc/apt/
     sudo apt-get update
     sudo apt-get install dselect
     sudo dselect update
-    sudo dpkg --set-selections < ~/Package.list
+    sudo dpkg --set-selections <~/Package.list
     sudo apt-get dselect-upgrade -y
 }
 
@@ -45,9 +40,8 @@ function import_all()
 
 sudo apt install openjdk-17-jdk-headless
 
-function neovim()
-{
+function neovim() {
     sudo apt install neovim
-    mkdir -p ./config/nvim && cp ~/.config/nvim/init.vim $_     # backup vim
+    mkdir -p ./config/nvim && cp ~/.config/nvim/init.vim $_ # backup vim
     cp ~/.config/nvim/init.vim ~/.config/nvim/
 }

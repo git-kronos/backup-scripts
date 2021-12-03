@@ -1,5 +1,4 @@
-# !bin/bash
-
+#!/bin/bash
 
 # =============================
 # Arch apps
@@ -33,12 +32,10 @@ sudo ln -s /var/lib/snapd/snap /snap
 # =============================
 sudo snap install code --classic
 
-
 # =============================
 # Aur Repos
 # =============================
-function arch_repos()
-{
+function arch_repos() {
     #
     # FOR REFERENCE
     #

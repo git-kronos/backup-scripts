@@ -1,4 +1,4 @@
-# !/bin/bash -x
+#!/bin/bash
 
 function package_install() {
     # $1 is for repository name,
@@ -171,6 +171,9 @@ Manual install needed ...
 anydesk
 root access needed
 --------------------------------------
+wget https://download.virtualbox.org/virtualbox/6.1.30/virtualbox-6.1_6.1.30-148432~Ubuntu~eoan_amd64.deb
+sudo apt install ./virtualbox-6.1_6.1.30-148432~Ubuntu~eoan_amd64.deb
+rm ./virtualbox-6.1_6.1.30-148432~Ubuntu~eoan_amd64.deb
 ======================================
 ManualJobs
 refresh 2

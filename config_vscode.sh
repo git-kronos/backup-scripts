@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 
 function code_backup() {
     code --list-extensions >>./config/code/extensions.txt
