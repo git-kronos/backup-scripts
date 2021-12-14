@@ -4,20 +4,21 @@ BASEDIR=$(dirname "$0")
 LOG_FiLE="./repo.log"
 REPO_DiR="$BASEDIR/repos"
 
-declare -a repos=(
-    'https://aur.archlinux.org/anydesk-bin.git'
-    'https://aur.archlinux.org/google-chrome.git'
-    'https://aur.archlinux.org/pgadmin3.git'
-    'https://aur.archlinux.org/postman-bin.git'
-    'https://aur.archlinux.org/python36.git'
-    'https://aur.archlinux.org/python37.git'
-    'https://aur.archlinux.org/python38.git'
-    'https://aur.archlinux.org/tableplus.git'
-    'https://aur.archlinux.org/skypeforlinux-stable-bin.git'
-    'https://aur.archlinux.org/snapd.git'
+declare -a aur_repos=(
+    'anydesk-bin'
+    'google-chrome'
+    'pgadmin3'
+    'postman-bin'
+    'python36'
+    'python37'
+    'python38'
+    'tableplus'
+    'skypeforlinux-stable-bin'
+    'snapd'
 )
 
 declare -a pacmanApps=(
+    "yay"
     "libreoffice-still"
     "dconf-editor"
     "remmina"
@@ -102,3 +103,5 @@ install_app() {
 
 install_app
 postgres_config
+
+# https://tusharsadhwani.medium.com/how-to-setup-postgresql-and-pgadmin-on-manjaro-linux-arch-a76fa4404862

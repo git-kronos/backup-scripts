@@ -56,6 +56,9 @@ function postgresql() {
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     refresh 1 # sudo apt-get update
     sudo apt-get -y install postgresql postgresql-contrib
+    sudo service postgresql enable
+    sudo service postgresql start
+    sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'password';"
 }
 
 function pgadmin4() {
@@ -146,34 +149,27 @@ echo "Virtualisation supports"
 docker
 
 <<ManualJobs
-Skipping these process for Manual Installations
-======================================
-Postgres password setup
---------------------------------------
-sudo -u postgres createdb DB_NAME
+# Skipping these process for Manual Installations
+# ======================================
+# Postgres password setup
+# --------------------------------------
 sudo service postgresql start
+sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'password';"
 sudo -u postgres psql
 > ALTER USER postgres WITH PASSWORD 'password';
+
+sudo -u postgres createdb DB_NAME
 --------------------------------------
 Misc
 --------------------------------------
-https://ohmybash.nntoan.com/
-# sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
- https://github.com/JetBrains/JetBrainsMono
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
---------------------------------------
- vlc backup
---------------------------------------
-# cp ./config/vlc/* ~/.config/vlc/
---------------------------------------
-Skipping anydesk installation
-Manual install needed ...
-anydesk
-root access needed
---------------------------------------
-wget https://download.virtualbox.org/virtualbox/6.1.30/virtualbox-6.1_6.1.30-148432~Ubuntu~eoan_amd64.deb
-sudo apt install ./virtualbox-6.1_6.1.30-148432~Ubuntu~eoan_amd64.deb
-rm ./virtualbox-6.1_6.1.30-148432~Ubuntu~eoan_amd64.deb
-======================================
 ManualJobs
+
+sudo apt install vrtualbox
+sudo apt install anydesk
+
+cp ./config/vlc/* ~/.config/vlc/                                                                           # vlc backup
+sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"                   # https://ohmybash.nntoan.com/
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)" # https://github.com/JetBrains/JetBrainsMono
+# ======================================
+
 refresh 2
