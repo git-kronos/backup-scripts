@@ -40,7 +40,7 @@ function anydesk() {
 function docker() {
     sudo apt-get update
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
     refresh 1 # sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
     echo "=================================="
@@ -52,7 +52,7 @@ function docker() {
 
 function postgresql() {
     sudo apt-get install -y wget ca-certificates
-    sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+    sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     refresh 1 # sudo apt-get update
     sudo apt-get -y install postgresql postgresql-contrib
@@ -69,7 +69,7 @@ function pgadmin4() {
 
 function tableplus() {
     wget -qO - http://deb.tableplus.com/apt.tableplus.com.gpg.key | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main"
+    sudo add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://deb.tableplus.com/debian tableplus main"
     sudo apt update
     sudo apt install tableplus -y
 }
