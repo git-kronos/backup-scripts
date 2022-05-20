@@ -7,7 +7,8 @@ function code_backup() {
 
 function code_install() {
     sudo snap install code --classic
-    cat ./config/code/extensions.txt | xargs -n 1 code --install-extension
+    cat ./config/code/extensions.txt | xargs -n 1 code --install-extension  # for linux bash
+    Get-Content ./config/code/extensions.txt | ForEach-Object {code --install-extension $_}     # for windows powershell
     cp ./config/code/settings.json ~/.config/Code/User/
 }
 
